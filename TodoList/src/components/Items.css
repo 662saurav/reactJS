@@ -1,0 +1,22 @@
+#check {
+    height: 20px;
+    width: 20px;
+    accent-color: #EA5959;
+}
+
+.myList {
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+}
+
+.list-content {
+    display: flex;
+    gap: 10px;
+    font-size: 16px;
+}
+
+.icons {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+}
+
