@@ -5,8 +5,6 @@ import './Todo.css'
 const Todo = () => {
     const [inputValue, setInputValue] = useState('')
     const [todo, setTodo] = useState([])
-
-    const saveList = () => localStorage.setItem("list", JSON.stringify(todo))
     
     
     useEffect(() => {
@@ -15,7 +13,7 @@ const Todo = () => {
     }, [])
     
     useEffect(() => {
-       saveList()
+       localStorage.setItem("list", JSON.stringify(todo))
     }, [todo])
     
     const handleChange = (e) => setInputValue(e.target.value)
@@ -39,9 +37,9 @@ const Todo = () => {
             <div className="todo">
                 <div className="side-panel">
                     <ul>
-                        <li className='bg-white'><h3>All</h3></li>
-                        <li><h3>Pending</h3></li>
+                        <li className='bg-white'><h3>Pending</h3></li>
                         <li><h3>Completed</h3></li>
+                        <li><h3>All</h3></li>
                     </ul>
                 </div>
 
@@ -54,11 +52,8 @@ const Todo = () => {
 
                     <div className='items'>
                         {todo.map((item, index) => {
-                            const myProps = {index, item, todo, setTodo, saveList, inputValue, setInputValue}
-                            return (
-                                <Task key={index} {...myProps}/>
-                                
-                            )
+                            const myProps = {item, index, todo, setTodo, setInputValue}
+                            return <Task key={index} {...myProps}/>
                         })}
                     </div>
                 </div>

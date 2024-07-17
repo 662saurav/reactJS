@@ -1,20 +1,19 @@
 import React from 'react'
 import './Task.css'
 
-const Task = ({ item, index, todo, setTodo, saveList, inputValue, setInputValue }) => {
+const Task = ({ item, index, todo, setTodo, setInputValue }) => {
 
     const handleEdit = () => {
         setTodo(todo.filter((e, i) => {
-            if (i == index) 
+            if (i == index)
                 setInputValue(e)
             return i !== index
         }))
-
     }
 
     const handleDelete = () => {
         setTodo(() => todo.filter((e, i) => i !== index))
-        saveList()
+        localStorage.setItem("list", JSON.stringify(todo))
     }
 
     return (
