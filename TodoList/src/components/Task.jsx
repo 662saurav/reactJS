@@ -1,7 +1,9 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './Task.css'
 
 const Task = ({ item, index, todo, setTodo, setInputValue }) => {
+
+    const [isChecked, setIsChecked] = useState(false)
 
     const handleEdit = () => {
         setTodo(todo.filter((e, i) => {
@@ -20,8 +22,8 @@ const Task = ({ item, index, todo, setTodo, setInputValue }) => {
         <>
             <div className="myList">
                 <div className='list-content'>
-                    <input type="checkbox" id="check" />
-                    <div>{item}</div>
+                    <input type="checkbox" id="check" checked={isChecked} onChange={() => setIsChecked(!isChecked)}/>
+                    <div style={{textDecoration: isChecked ? "line-through" : "none"}}>{item}</div>
                 </div>
 
                 <div className='icons'>
