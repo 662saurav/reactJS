@@ -34,6 +34,10 @@ li {
     text-align: center;
 }
 
+li:hover {
+    cursor: pointer;
+}
+
 .side-panel {
     background-color: #EA5959;
     display: grid;
@@ -48,7 +52,7 @@ h1 {
 .main {
     padding: 30px;
     background-color: white;
-    opacity: 0.9;
+    opacity: 0.82;
 }
 
 .tophead {
@@ -78,7 +82,7 @@ input::placeholder {
     background-color: #EA5959;
     border: none;
     height: 40px;
-    width: 80px;
+    width: 70px;
     margin-left: 20px;
     font-weight: bold;
     font-size: 14px;
@@ -86,7 +90,11 @@ input::placeholder {
     border-radius: 5px;
 }
 
-.item> * {
+#add-btn:hover {
+    cursor: pointer;
+}
+
+.items> * {
     margin-bottom: 30px;
 }
 
