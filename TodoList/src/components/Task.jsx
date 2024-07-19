@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import './Task.css'
 
 const Task = ({ item, index, todo, setTodo, setInputValue }) => {
@@ -18,11 +18,20 @@ const Task = ({ item, index, todo, setTodo, setInputValue }) => {
         localStorage.setItem("list", JSON.stringify(todo))
     }
 
+    const handleCheck = () => {
+        setIsChecked(!isChecked)
+        localStorage.setItem("checkbox", JSON.stringify(!isChecked))
+    }
+    
+    useEffect(() => {
+        setIsChecked(JSON.parse(localStorage.getItem("checkbox")))
+    },[])
+
     return (
         <>
             <div className="myList">
                 <div className='list-content'>
-                    <input type="checkbox" id="check" checked={isChecked} onChange={() => setIsChecked(!isChecked)}/>
+                    <input type="checkbox" id="check" checked={isChecked} onChange={handleCheck}/>
                     <div style={{textDecoration: isChecked ? "line-through" : "none"}}>{item}</div>
                 </div>
 
