@@ -6,6 +6,7 @@ const Todo = () => {
     const [inputValue, setInputValue] = useState('')
     const [todo, setTodo] = useState([])
     const inputRef = useRef()
+    let isCompleted = true;
 
     useEffect(() => {
         let list = localStorage.getItem("list");
@@ -25,7 +26,7 @@ const Todo = () => {
     
     const handleClick = () => {
         if (!inputValue.trim() !== '') {
-            setTodo([...todo, inputValue])
+            setTodo([...todo, {inputValue, isCompleted: false}])    
             setInputValue('')
         }
 
@@ -57,7 +58,7 @@ const Todo = () => {
 
                     <div className='items'>
                         {todo.map((item, index) => {
-                            const myProps = {item, index, todo, setTodo, setInputValue}
+                            const myProps = {item, index, todo, setTodo, setInputValue, isCompleted}
                             return <Task key={index} {...myProps}/>
                         })}
                     </div>
@@ -69,5 +70,4 @@ const Todo = () => {
 }
 
 export default Todo
-
 
